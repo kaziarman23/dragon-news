@@ -7,6 +7,8 @@ import Home from "./components/Home/Home";
 import Login from "./components/Login/Login";
 import Register from "./components/Register/Register";
 import AuthProvider from "./components/Provider/AuthProvider";
+import News from "./components/News/News";
+import PrivateRoute from "./components/PrivateRoute/PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -16,6 +18,14 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+      },
+      {
+        path: "/news/:id",
+        element: (
+          <PrivateRoute>
+            <News />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/login",

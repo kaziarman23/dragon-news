@@ -5,7 +5,6 @@ import { AuthContext } from "../Provider/AuthProvider";
 
 const Login = () => {
   const [name, setName] = useState("");
-  const [photo, setPhoto] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -51,18 +50,7 @@ const Login = () => {
                   required
                 />
               </div>
-              <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Photo Url</span>
-                </label>
-                <input
-                  type="text"
-                  placeholder="Photo"
-                  value={photo}
-                  onChange={(e) => setPhoto(e.target.value)}
-                  className="input input-bordered"
-                />
-              </div>
+              
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Email</span>

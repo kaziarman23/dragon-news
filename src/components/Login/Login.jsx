@@ -1,9 +1,11 @@
 import { useContext, useState } from "react";
 import Navbar from "../shared/Navbar/Navbar";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 
 const Login = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
   const { loginUser } = useContext(AuthContext);
 
   const [email, setEmail] = useState("");
@@ -18,9 +20,16 @@ const Login = () => {
     setPassword("");
 
     // login user
-    loginUser(email, password).then((result) => {
-      console.log(result.user);
-    });
+    loginUser(email, password)
+      .then((result) => {
+        console.log(result.user);
+
+        // navigating the user after the login
+        navigate(location?.state ? location.state : "/");
+      })
+      .catch((error) => {
+        console.log(error.message, error);
+      });
   };
 
   return (

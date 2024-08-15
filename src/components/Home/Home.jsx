@@ -3,6 +3,8 @@ import LeftSideNav from "../shared/LeftsideNav/LeftSideNav";
 import RightSideNav from "../shared/RightSideNav/RightSideNav";
 import Navbar from "../shared/Navbar/Navbar";
 import BrakingNews from "./BrakingNews";
+import news from "../../../public/news.json";
+import NewsCards from "./NewsCards";
 
 const Home = () => {
   return (
@@ -10,12 +12,14 @@ const Home = () => {
       <Header />
       <BrakingNews />
       <Navbar />
-      <div className="grid grid-cols-1 lg:grid-cols-4 gap-6 my-10">
+      <div className="h-[1510px] grid grid-cols-1 lg:grid-cols-4 gap-6 my-10">
         <div>
           <LeftSideNav />
         </div>
-        <div className="border-2 border-orange-500 lg:col-span-2">
-          <h1>Today&#39;s news</h1>
+        <div className="overflow-scroll lg:col-span-2">
+          {news.map((aNews) => (
+            <NewsCards News={aNews} key={aNews._id}></NewsCards>
+          ))}
         </div>
         <div>
           <RightSideNav />
