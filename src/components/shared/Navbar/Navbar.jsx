@@ -1,7 +1,10 @@
 import { Link, NavLink } from "react-router-dom";
 import Profile from "../../../assets/user.png";
+import { AuthContext } from "../../Provider/AuthProvider";
+import { useContext } from "react";
 
 const Navbar = () => {
+  const { user, logOut } = useContext(AuthContext);
   const navLinks = (
     <>
       <li>
@@ -13,8 +16,25 @@ const Navbar = () => {
       <li>
         <NavLink to="/career">Career</NavLink>
       </li>
+      <li>
+        <NavLink to="/login">Login</NavLink>
+      </li>
+      <li>
+        <NavLink to="/register">Register</NavLink>
+      </li>
     </>
   );
+
+  const handleLogout = () => {
+    // logout user
+    logOut()
+      .then((result) => {
+        console.log(result.user);
+      })
+      .catch((result) => {
+        console.log(result.user);
+      });
+  };
 
   return (
     <div className="navbar bg-base-100">
@@ -43,7 +63,6 @@ const Navbar = () => {
             {navLinks}
           </ul>
         </div>
-        <a className="btn btn-ghost text-xl">daisyUI</a>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{navLinks}</ul>
@@ -54,9 +73,15 @@ const Navbar = () => {
             <img src={Profile} alt="profile image" />
           </div>
         </label>
-        <Link to="/login">
-          <button className="btn btn-active btn-neutral">Login</button>
-        </Link>
+        {!user ? (
+          <Link to="/login">
+            <button className="btn btn-outline">Login</button>
+          </Link>
+        ) : (
+          <button onClick={handleLogout} className="btn btn-outline">
+            Logout
+          </button>
+        )}
       </div>
     </div>
   );
