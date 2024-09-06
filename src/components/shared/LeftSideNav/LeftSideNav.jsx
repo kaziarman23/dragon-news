@@ -19,7 +19,7 @@ const LeftSideNav = () => {
       <div className="p-3">
         <h1>All caterogy</h1>
         <div className="w-full p-3">
-          <h1 className="bg-slate-400  text-xl text-center p-3">
+          <h1 className="text-xl text-center p-3">
             Netional News
           </h1>
           {categories.map((catagori) => (

@@ -35,7 +35,7 @@ const Login = () => {
   return (
     <>
       <Navbar></Navbar>
-      <div className="hero bg-base-200 min-h-screen">
+      <div className="hero dark:bg-[#1c222a] min-h-screen">
         <div className="hero-content flex-col ">
           <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
             <h1 className="text-center p-2 text-2xl font-bold">Login Now</h1>
