@@ -1,9 +1,10 @@
+/* eslint-disable react/prop-types */
 import { Link, NavLink } from "react-router-dom";
 import Profile from "../../../assets/user.png";
 import { AuthContext } from "../../Provider/AuthProvider";
 import { useContext } from "react";
 
-const Navbar = ({handleToggle}) => {
+const Navbar = ({ toggleDarkMode }) => {
   const { user, logOut } = useContext(AuthContext);
   const navLinks = (
     <>
@@ -59,8 +60,7 @@ const Navbar = ({handleToggle}) => {
         </div>
 
         {/* we will set a toggle mood for dark mood and light mood*/}
-        <input type="checkbox" onChange={handleToggle} className="toggle"/>
-
+        <input type="checkbox" value="synthwave" className="toggle theme-controller" />
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{navLinks}</ul>
